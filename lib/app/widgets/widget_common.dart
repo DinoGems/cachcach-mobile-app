@@ -3,6 +3,7 @@ import 'package:cachcach/core/theme/icons.dart';
 import 'package:cachcach/core/theme/images.dart';
 import 'package:cachcach/core/theme/text_styles.dart';
 import 'package:cachcach/core/utils/my_size_extensions.dart';
+import 'package:cachcach/core/values/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -321,6 +322,22 @@ Widget popupWidget({required Widget child}) {
 }
 
 void showRulesTruthOrDare() {
+  dialogRolesGame(rules: listRulesTruthOrDare, title: "Truth or Dare");
+}
+
+void showRulesFlipCard() {
+  dialogRolesGame(rules: listRulesFlipCard, title: "Lật thẻ bài");
+}
+
+void showRulesChooseRightPrice() {
+  dialogRolesGame(rules: listRulesChooseRightPrice, title: "Hãy chọn giá đúng");
+}
+
+void showRulesPopIt() {
+  dialogRolesGame(rules: listRulesPopIt, title: "Pop It");
+}
+
+void dialogRolesGame({required List<String> rules, required String title}) {
   Get.dialog(
     popupWidget(
       child: Container(
@@ -331,7 +348,7 @@ void showRulesTruthOrDare() {
             space(h: 12.h),
             Center(
               child: Text(
-                "Truth or Dare",
+                title,
                 style: AppTextStyle.textStyleCommon.copyWith(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -340,102 +357,9 @@ void showRulesTruthOrDare() {
               ),
             ),
             space(h: 12.h),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Bộ bài sẽ có tổng cộng N lá bài, mỗi lá có 1 Truth và 1 Dare.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Luật chơi là mọi người sẽ ngồi vòng tròn, sau đó bạn cần phải quay vòng quay may rủi trên APP để biết tên người thực hiện thử thách.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Người thực hiện  chọn “Truth” bạn sẽ phải trả lời đúng sự thật với câu hỏi được ghi trên lá bài. Còn nếu chọn “Dare”, bạn phải thực hiện theo những gì lá bài ghi.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Chúc các bạn chơi game vui vẻ.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            ...rules.map((String rule) {
+              return componentItemRuleGame(rule);
+            }).toList(),
             space(h: 40),
           ],
         ),
@@ -443,150 +367,30 @@ void showRulesTruthOrDare() {
     ),
   );
 }
-void showRulesFlipCard() {
-  Get.dialog(
-    popupWidget(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            space(h: 12.h),
-            Center(
-              child: Text(
-                "Lật thẻ bài",
-                style: AppTextStyle.textStyleCommon.copyWith(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.black,
-                ),
-              ),
-            ),
-            space(h: 12.h),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Mỗi một bộ bài có số lượng lá nhất định.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Mỗi lá bài sẽ có một sự kiện, nội dung hay các nhiệm vụ có thể liên quan đến mối quan hệ, tình cảm hoặc những trải nghiệm thú vị.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Bạn sẽ lật một lá bài và thực hiện nhiệm theo nội dung lá bài.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Trò chơi này thường mang đến niềm vui, sự hứng khởi và cơ hội để bạn và bạn bè hiểu rõ hơn về nhau. Chúc các bạn chơi game vui vẻ.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "-",
-                  style: AppTextStyle.textStyleCommon.copyWith(
-                    fontSize: 13.sp,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                space(w: 4),
-                Expanded(
-                  child: Text(
-                    "Chúc các bạn chơi game vui vẻ.",
-                    style: AppTextStyle.textStyleCommon.copyWith(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            space(h: 40),
-          ],
+
+Widget componentItemRuleGame(String string) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "-",
+        style: AppTextStyle.textStyleCommon.copyWith(
+          fontSize: 13.sp,
+          color: AppColors.black,
+          fontWeight: FontWeight.w600,
         ),
       ),
-    ),
+      space(w: 4),
+      Expanded(
+        child: Text(
+          string,
+          style: AppTextStyle.textStyleCommon.copyWith(
+            fontSize: 13.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.black,
+          ),
+        ),
+      ),
+    ],
   );
 }

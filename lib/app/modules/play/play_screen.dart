@@ -1,4 +1,5 @@
 import 'package:cachcach/app/modules/play/controller/play_controller.dart';
+import 'package:cachcach/app/modules/play/utils/play_utils.dart';
 import 'package:cachcach/app/modules/play/widgets/slogan.dart';
 import 'package:cachcach/app/widgets/widget_common.dart';
 import 'package:cachcach/core/theme/colors.dart';
@@ -6,7 +7,6 @@ import 'package:cachcach/core/theme/icons.dart';
 import 'package:cachcach/core/theme/images.dart';
 import 'package:cachcach/core/theme/text_styles.dart';
 import 'package:cachcach/core/utils/my_size_extensions.dart';
-import 'package:cachcach/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -75,24 +75,19 @@ class _PlayScreenState extends State<PlayScreen> {
           itemBuilder: (BuildContext context, int index) {
             var gameMode = controller.listGameMode[index];
             return _buildNewItem(
-                playType: gameMode.playType ?? 1,
-                title: gameMode.name ?? "",
-                description: gameMode.description ?? "",
-                totalPlayer: gameMode.getTotalPlayer(),
-                showRules: false,
-                onTap: () {
-                  controller.playMode = gameMode.getPlayMode();
-                  //TODO Type card 1
-                  if (gameMode.type == 1) {
-                    Get.toNamed(RouteName.cardSelectMode,
-                        arguments: {"id": gameMode.id});
-                  }
-                  //TODO Type Truth or dare 2
-                  if (gameMode.type == 2) {
-                    Get.toNamed(RouteName.selectTopic,
-                        arguments: {"id": gameMode.id});
-                  }
-                });
+              playType: gameMode.playType ?? 1,
+              title: gameMode.name ?? "",
+              description: gameMode.description ?? "",
+              totalPlayer: gameMode.getTotalPlayer(),
+              showRules: false,
+              onTap: () {
+                controller.playMode = gameMode.getPlayMode();
+                Get.toNamed(
+                  PlayUtils.getRouteByName(gameMode.name ?? ""),
+                  arguments: {"id": gameMode.id},
+                );
+              },
+            );
           },
           separatorBuilder: (BuildContext context, int index) {
             return space(h: 16.h);
@@ -111,16 +106,6 @@ class _PlayScreenState extends State<PlayScreen> {
     bool showRules = true,
     Function? onTap,
   }) {
-    String getImgPreview() {
-      if (playType == 1) {
-        return AppImages.imgPlayCard;
-      } else if (playType == 2) {
-        return AppImages.imgTruthOrDareSingle;
-      } else {
-        return AppImages.imgTruthOrDareGroup;
-      }
-    }
-
     return GestureDetector(
       onTap: () {
         onTap?.call();
@@ -148,7 +133,10 @@ class _PlayScreenState extends State<PlayScreen> {
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Image.asset(
-                getImgPreview(),
+                PlayUtils.getImageByNameAndPlayType(
+                  playType: playType,
+                  name: title,
+                ),
                 fit: BoxFit.fill,
               ),
             ),
@@ -175,7 +163,7 @@ class _PlayScreenState extends State<PlayScreen> {
                 space(w: 10.w),
                 Container(
                   padding: EdgeInsets.only(left: 12, bottom: 4.h, top: 4.h),
-                  child: _buildRowRules(playType: playType),
+                  child: _buildRowRules(name: title),
                 )
               ],
             ),
@@ -246,14 +234,10 @@ class _PlayScreenState extends State<PlayScreen> {
     );
   }
 
-  Widget _buildRowRules({required int playType}) {
+  Widget _buildRowRules({required String name}) {
     return InkWell(
       onTap: () {
-        if (playType == 1) {
-          showRulesFlipCard();
-        } else {
-          showRulesTruthOrDare();
-        }
+        PlayUtils.getRuleByName(name);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -278,24 +262,9 @@ class _PlayScreenState extends State<PlayScreen> {
   }
 
   Widget _buildTitle({required int playType}) {
-    List<String> descriptions = [
-      'Dành cho tất cả',
-      'Dành cho những cặp đôi',
-      'Cho nhóm bạn',
-    ];
-    String getDescriptions() {
-      if (playType == 1) {
-        return descriptions[0];
-      } else if (playType == 2) {
-        return descriptions[1];
-      } else {
-        return descriptions[2];
-      }
-    }
-
     return Expanded(
       child: Text(
-        getDescriptions(),
+        PlayUtils.getTitleByTypeModeGame(playType),
         style: AppTextStyle.textStyleCommon.copyWith(
           color: AppColors.dimGray,
           fontSize: 12.sp,

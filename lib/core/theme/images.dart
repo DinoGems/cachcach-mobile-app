@@ -65,4 +65,10 @@ class AppImages {
   static const imgTruthV2 = "assets/images/img_truth_v2.png";
   static const imgDareV2 = "assets/images/img_dare_v2.png";
   static const imgBgContent = "assets/images/img_bg_content.png";
+  static const imgChooseRightPrice = "assets/images/img_choose_right_price.png";
+  static const imgCupAround = "assets/images/img_cup_around.png";
+  static const imgPopIt = "assets/images/img_pop_it.png";
+  static const imgBlackPopIt = "assets/images/img_black_pop_it.png";
+  static const imgYellowPopIt = "assets/images/img_yellow_pop_it.png";
+  static const imgRedPopIt = "assets/images/img_red_pop_it.png";
 }

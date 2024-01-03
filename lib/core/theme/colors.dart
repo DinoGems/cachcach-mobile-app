@@ -232,4 +232,6 @@ class AppColors {
 
   /// #F2AB00
   static const yellowOrange = Color(0xffF2AB00);
+
+  static const brightYellow = Color(0xFFFCA703);
 }
