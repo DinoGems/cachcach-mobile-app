@@ -353,8 +353,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
         onTap: () async {
-          final Uri url = Uri.parse(
-              'https://cachcach.org/policy');
+          final Uri url = Uri.parse('https://cachcach.org/policy');
           if (!await launchUrl(url)) {
             throw Exception('Could not launch $url');
           }
@@ -394,8 +393,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
         onTap: () async {
-          final Uri url = Uri.parse(
-              'https://cachcach.org/privacy');
+          final Uri url = Uri.parse('https://cachcach.org/privacy');
           if (!await launchUrl(url)) {
             throw Exception('Could not launch $url');
           }
