@@ -124,11 +124,12 @@ class _TruthOrDareV2ScreenState extends State<TruthOrDareV2Screen> {
                 ),
                 Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                      EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
                   child: Center(
                     child: Obx(
                       () => Text(
                         controller.contentTruth.value,
+                        textAlign: TextAlign.justify,
                         style: AppTextStyle.textStyleCommon.copyWith(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w400,
@@ -187,11 +188,12 @@ class _TruthOrDareV2ScreenState extends State<TruthOrDareV2Screen> {
                 ),
                 Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                      EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
                   child: Center(
                     child: Obx(
                       () => Text(
                         controller.contentDare.value,
+                        textAlign: TextAlign.justify,
                         style: AppTextStyle.textStyleCommon.copyWith(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w400,
