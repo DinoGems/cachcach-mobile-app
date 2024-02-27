@@ -12,9 +12,9 @@ class PlayUtils {
       case 'Thật Hay Thách':
         route = RouteName.selectTopic;
         break;
-      case 'Hãy Chọn Giá Đúng':
-        route = RouteName.chooseRightPrice;
-        break;
+      // case 'Hãy Chọn Giá Đúng':
+      //   route = RouteName.chooseRightPrice;
+      //   break;
       case 'Pop It':
         route = RouteName.popIt;
         break;
@@ -59,9 +59,9 @@ class PlayUtils {
         } else
           urlImage = AppImages.imgTruthOrDareGroup;
         break;
-      case 'Hãy Chọn Giá Đúng':
-        urlImage = AppImages.imgChooseRightPrice;
-        break;
+      // case 'Hãy Chọn Giá Đúng':
+      //   urlImage = AppImages.imgChooseRightPrice;
+      //   break;
       case 'Pop It':
         urlImage = AppImages.imgPopIt;
         break;
@@ -80,9 +80,9 @@ class PlayUtils {
       case 'Thật Hay Thách':
         showRulesTruthOrDare();
         break;
-      case 'Hãy Chọn Giá Đúng':
-        showRulesChooseRightPrice();
-        break;
+      // case 'Hãy Chọn Giá Đúng':
+      //   showRulesChooseRightPrice();
+      //   break;
       case 'Pop It':
         showRulesPopIt();
         break;

@@ -69,7 +69,7 @@ class _PopItScreenState extends State<PopItScreen> {
           _countdownDisplay--;
         } else {
           timer.cancel();
-          _countdownReply = 10;
+          _countdownReply = 5;
           isReply = !isReply;
           startCountdownReply();
         }
@@ -144,6 +144,7 @@ class _PopItScreenState extends State<PopItScreen> {
 
   void changeAnswerUser(int index) {
     setState(() {
+      if (_countdownDisplay > 0) return;
       listResult[index] = listResult[index] == "black" ? "yellow" : "black";
       int indexFind = answerUser.indexWhere((element) => element == index);
       if (indexFind > -1) {
@@ -177,7 +178,7 @@ class _PopItScreenState extends State<PopItScreen> {
 
       round = 1;
       _countdownDisplay = 5;
-      _countdownReply = 10;
+      _countdownReply = 5;
 
       isReply = false;
       isShowError = false;
@@ -224,8 +225,7 @@ class _PopItScreenState extends State<PopItScreen> {
               ],
             ),
           ),
-          // space(h: 65.h),
-          confetti(_controllerTopCenter),
+          SizedBox(height: 65, child: confetti(_controllerTopCenter)),
           _widgetCountDown(isReply),
           space(h: 24.h),
           _imageButton(countdown: _countdownDisplay, showErr: isShowError),
@@ -254,7 +254,7 @@ class _PopItScreenState extends State<PopItScreen> {
         width: 152,
         height: 30,
         child: Text(
-          '$countdown s',
+          '$countdown' + 's',
           style: const TextStyle(
               fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -340,14 +340,14 @@ class _PopItScreenState extends State<PopItScreen> {
               ),
             ),
             space(h: 60.h),
-            _turnButton(turn: '1/3', title: 'Tự mình rút bài 2', round: round),
+            _turnButton(turn: '1/3', title: 'Tự mình rút bài', round: round),
             space(h: 30.h),
             _turnButton(
                 turn: '2/3', title: 'Người bên trái rút bài', round: round),
             space(h: 30.h),
             _turnButton(
                 turn: '3/3', title: 'Chỉ định người rút bài', round: round),
-          ]),
+          ]), /**/
         ],
       ),
     );
