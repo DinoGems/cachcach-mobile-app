@@ -7,6 +7,7 @@ import 'package:cachcach/core/theme/icons.dart';
 import 'package:cachcach/core/theme/images.dart';
 import 'package:cachcach/core/theme/text_styles.dart';
 import 'package:cachcach/core/utils/my_size_extensions.dart';
+import 'package:cachcach/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,13 +35,18 @@ class _PlayScreenState extends State<PlayScreen> {
           children: [
             _buildTopBar(),
             space(h: 30.h),
-            Center(
-              child: Text(
-                "CHỌN CHẾ ĐỘ CHƠI",
-                style: AppTextStyle.textStyleCommon.copyWith(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.yellowOrange,
+            InkWell(
+              onTap: () {
+                Get.toNamed(RouteName.partyGame);
+              },
+              child: Center(
+                child: Text(
+                  "CHỌN CHẾ ĐỘ CHƠI",
+                  style: AppTextStyle.textStyleCommon.copyWith(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.yellowOrange,
+                  ),
                 ),
               ),
             ),

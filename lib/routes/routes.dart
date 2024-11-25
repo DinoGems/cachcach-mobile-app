@@ -19,6 +19,7 @@ import 'package:cachcach/app/modules/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../app/modules/party_game/party_game_screen.dart';
 import '../app/modules/play/end_game/end_game_screen.dart';
 import '../app/modules/play/select_mode/type_card/card_select_mode_screen.dart';
 
@@ -50,6 +51,9 @@ class RouteName {
   static const String truthOrDareV2 = '/truth-or-dare-v2';
   static const String chooseRightPrice = '/choose-right-price';
   static const String popIt = '/pop-it';
+
+  // party game new
+  static const String partyGame = '/party-game';
 }
 
 class AppRoutes {
@@ -74,6 +78,7 @@ class AppRoutes {
     RouteName.truthOrDareV2: () => const TruthOrDareV2Screen(),
     RouteName.chooseRightPrice: () => const ChooseRightPriceScreen(),
     RouteName.popIt: () => const PopItScreen(),
+    RouteName.partyGame: () => const PartyGameScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{};
