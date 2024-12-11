@@ -255,8 +255,8 @@ class _FlipTheCardScreenState extends State<FlipTheCardScreen>
                         controller.cardContent.value,
                         style: AppTextStyle.textStyleCommon.copyWith(
                           fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
                           color: AppColors.black,
+                          fontFamily: 'iCielBeCool',
                         ),
                       ),
                     ),
@@ -281,8 +281,9 @@ class _FlipTheCardScreenState extends State<FlipTheCardScreen>
                     "${controller.getCardNumber()}/${controller.getTotal()}",
                     style: AppTextStyle.textStyleCommon.copyWith(
                       fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w400,
                       color: AppColors.black,
+                      fontFamily: 'iCielBeCool',
                     ),
                   ),
                 ),

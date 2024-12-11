@@ -32,6 +32,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   flutter_slidable: ^3.0.0
   url_launcher: ^6.2.1
+  confetti: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,10 @@ flutter:
         - asset: fonts/Poppins-Bold.ttf
           weight: 600
 
+    - family: iCielBeCool
+      fonts:
+        - asset: fonts/iCielBeCool-Regular.otf
+
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen
   # with background color and splash image.
@@ -66,7 +71,7 @@ flutter_native_splash:
   # of your splash screen to a solid color.  Use background_image to set the background of your
   # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
   # size of the app. Only one parameter can be used, color and background_image cannot both be set.
-#  color: "#42a5f5"
+  #  color: "#42a5f5"
   #background_image: "assets/background.png"
 
   # Optional parameters are listed below.  To enable a parameter, uncomment the line by removing
